@@ -5,50 +5,35 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
 
 <script type="text/javascript">
-//$(document).ready(function(){
+$(document).ready(function(){
+	$.get('test_data.xml', function(xml){
+		var person = $(xml).find('person').text();
+		$(xml).find('person').each(function(){
+		 $("#temp").append('<li>' + $(this).text() + '</li>');
+		}); 
+	});
+});
+
 function loadXmlData() {
-   //alert('inside function');
-   
-  
   $.get('test_data.xml', function(xml){
 	var person = $(xml).find('person').text();  
-	
-	alert(person);
-
-    //but if it's multiple items then loop
+	$("#temp").html('');
     $(xml).find('person').each(function(){
-     alert('inside xml');
-	 $("#temp").append('<li>' + $(this).text() + '</li>');  
+	 $("#temp").append('<li>' + $(this).text() + '</li>');
     }); 
   });
-//});
 }
 </script>
 </head>
 <body>
 	<div id="container">    
-    <!-- <script type="text/javascript" src="http://cssglobe.com/ads/blogsponsor.js"></script> -->
 
     <div id="side">
         <div class="tags">
             <ul class="cld">
-                <!-- <li class="tag1" id="java"><a href="https://www.google.com">google</a></li> 
-                <li class="tag2"><a href="#">Chiessy</a></li>
-                <li class="tag3"><a href="#">sitemap</a></li>
-                <li class="tag2"><a href="#">Sales</a></li>
-                <li class="tag4" ><a href="#">Gohome</a></li> -->
 				<button  onClick="loadXmlData();">Click Me!</button>
-                <li class="tag1"id="temp"><a href="#">Movies</a></li>
-                <!-- <li class="tag1"><a href="#">It Jobz</a></li>
-                <li class="tag5"><a href="#">Alza</a></li>
-                <li class="tag2"><a href="#">Sea food</a></li>
-                <li class="tag1"><a href="#">Hospital</a></li>
-                <li class="tag3"><a href="#">Smart phone</a></li>
-                <li class="tag4"><a href="#">Pizza </a></li>
-                <li class="tag1"><a href="#">Aerobics</a></li>
-                <li class="tag5"><a href="#">Yahoo...</a></li>
-                <li class="tag1"><a href="#">Anti-Virus</a></li>
-                <li class="tag2"><a href="#">Travel</a></li> -->
+                <li class="tag1"><a href="#">Movies</a></li>
+				<div id="temp" ></div>
             </ul>
         </div>
     </div>
