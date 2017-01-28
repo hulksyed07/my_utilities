@@ -24,32 +24,36 @@
 	  for (y=1 ; y<= 100 ; y++) {
 		  if (excel_sheet.Cells(1,y).Value != null && excel_sheet.Cells(1,y).Value != '') {
 			//headers.push(excel_sheet.Cells(1,y).Value);
-			break;
+			header_count = header_count + 1;
+			
 		  }
 		  else{
-			header_count = header_count + 1;
+			break;
 		  }
 		  
 	  }
+	  var final_data = [[]];
+	  var header_array = []
+	  for (y=1 ; y<= header_count ; y++) {
+		header_array.push(null);
+	  }
 	  
-	  //var header_array = []
-	  //for (y=1 ; y<= header_count ; y++) {
-	//	header_array.push(null);
-	  //}
+	  for (x=1 ; x<= 100 ; x++) {
+		final_data.push(header_array);
+	  }
 	  //alert(header_array);
 	  //var final_data = [100][header_count-1];
 	  
-	  //var final_data = ([header_array]);
-	  var hello = 'hello';
-	  //var final_data = ([0,1],[1,2]);
-	  var final_data = new Array(10);
+	  //var final_data = [[0,1],[1,2]];
+	  //var final_data = new Array(10);
 	  for (x=1; x <= 100 ; x++) {
 		  if (excel_sheet.Cells(x,1).Value != null && excel_sheet.Cells(x,1).Value != '') {
-			final_data[x-1] = [];
+			//final_data[x-1] = ['hello','name'];
 			for (y=1 ; y <= header_count ; y++) {
-			  //final_data[x-1][y-1] = excel_sheet.Cells(x,y).Value;
-			  
-			  final_data[x-1].push(excel_sheet.Cells(x,y).Value);
+			  final_data[x-1][y-1] = excel_sheet.Cells(x,y).Value;
+			  //final_data[1][0] = excel_sheet.Cells(x,y).Value;
+			  //Console.log('it worked');
+			  //final_data[x-1].push(excel_sheet.Cells(x,y).Value);
 			}
 		  }
 		  else{
@@ -57,8 +61,9 @@
 		  }
 		  
 	  }
+	  //final_data[0][0] =  23;
 	  
-	  document.write("Value from Excel file is " + final_data[0]);
+	  document.write("Value from Excel file is " + final_data[1][0]);
       return final_data[0][0];
 	  
    }
