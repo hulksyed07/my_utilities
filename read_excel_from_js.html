@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>excel</title>
+<script type="text/javascript">
+   function readFromExcel(x,y)
+   {
+      var excel = new ActiveXObject("Excel.Application");
+      var excel_file = excel.Workbooks.Open("C:/Users/hulksyed07/Documents/test_data.xls");
+      var excel_sheet = excel_file.Worksheets("Sheet1");
+      var data = excel_sheet.Cells(x,y).Value;
+      //var value = readFromExcel(1,1).value; 
+      document.write("Value from Excel file is " + data);
+      return data;
+   }
+   
+</script>
+</head>
+<body onload="readFromExcel(1,1)">
+</body>
+</html>
