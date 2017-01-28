@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>excel</title>
+<script type="text/javascript">
+   function readFromExcel(x,y)
+   {
+      var excel = new ActiveXObject("Excel.Application");
+      var excel_file = excel.Workbooks.Open("C:/Users/hulksyed07/Documents/test_data.xls");
+      var excel_sheet = excel_file.Worksheets("Sheet1");
+      var data = excel_sheet.Cells(x,y).Value;
+      //var value = readFromExcel(1,1).value; 
+      document.write("Value from Excel file is " + data);
+      return data;
+   }
+   
+   function readTabularDataFromExcel()
+   {
+      var excel = new ActiveXObject("Excel.Application");
+      var excel_file = excel.Workbooks.Open("C:/Users/hulksyed07/Documents/test_data.xls");
+      var excel_sheet = excel_file.Worksheets("Sheet1");
+	  var header_count = 0;
+	  for (y=1 ; y<= 100 ; y++) {
+		  if (excel_sheet.Cells(1,y).Value != null && excel_sheet.Cells(1,y).Value != '') {
+			//headers.push(excel_sheet.Cells(1,y).Value);
+			break;
+		  }
+		  else{
+			header_count = header_count + 1;
+		  }
+		  
+	  }
+	  
+	  //var header_array = []
+	  //for (y=1 ; y<= header_count ; y++) {
+	//	header_array.push(null);
+	  //}
+	  //alert(header_array);
+	  //var final_data = [100][header_count-1];
+	  
+	  //var final_data = ([header_array]);
+	  var hello = 'hello';
+	  //var final_data = ([0,1],[1,2]);
+	  var final_data = new Array(10);
+	  for (x=1; x <= 100 ; x++) {
+		  if (excel_sheet.Cells(x,1).Value != null && excel_sheet.Cells(x,1).Value != '') {
+			final_data[x-1] = [];
+			for (y=1 ; y <= header_count ; y++) {
+			  //final_data[x-1][y-1] = excel_sheet.Cells(x,y).Value;
+			  
+			  final_data[x-1].push(excel_sheet.Cells(x,y).Value);
+			}
+		  }
+		  else{
+			break;
+		  }
+		  
+	  }
+	  
+	  document.write("Value from Excel file is " + final_data[0]);
+      return final_data[0][0];
+	  
+   }
+   
+</script>
+</head>
+<body onload="readTabularDataFromExcel()">
+
+
+</body>
+</html>
