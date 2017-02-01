@@ -13,17 +13,19 @@ $(document).ready(function(){
 		 $("#temp").append('<li>' + $(this).text() + '</li>');
 		}); 
 	});
+	
+	setInterval(function(){
+		$.get('test_data.xml', function(xml){
+			var person = $(xml).find('person').text();  
+			$("#temp").html('');
+			$(xml).find('person').each(function(){
+			 $("#temp").append('<li>' + $(this).text() + '</li>');
+			});
+    		});
+	},10000);
 });
 
-setInterval(function(){
-	$.get('test_data.xml', function(xml){
-		var person = $(xml).find('person').text();  
-		$("#temp").html('');
-		$(xml).find('person').each(function(){
-		 $("#temp").append('<li>' + $(this).text() + '</li>');
-		});
-    });
-},10000);
+
 
 function loadXmlData() {
   $.get('test_data.xml', function(xml){
