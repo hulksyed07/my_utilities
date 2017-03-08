@@ -1,0 +1,12 @@
+a=(1234 1235 1236 1237)
+out=download_files.log
+for ((i=0;i< ${#a[*]};i++)); 
+do 
+   doc_id=${a[$i]}
+   echo $doc_id >> $out
+   wget --user="test" --password="test123" --content-disposition "http://dummy.com/docs/download?id=$doc_id" 2>> $out
+done
+
+
+#To call the above file
+# ./download_files_unix.sh
