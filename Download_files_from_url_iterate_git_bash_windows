@@ -1,0 +1,9 @@
+a=(1234 1235 1236 1237)
+for ((i=0;i< ${#a[*]};i++)); 
+do 
+   doc_id=${a[$i]}
+   echo '------------------------------------------'
+   echo " ##### Doc ID : $doc_id #####" 
+   curl -O -J -f -u my_user_name:my_password http://dummy.com/docs/download?id=$doc_id 2>&1
+   echo -e '------------------------------------------\n\n'
+done
