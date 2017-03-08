@@ -1,0 +1,4 @@
+a=('Hello' 'This' 'Is' 'Array' 'Substraction')
+b=('Hello' 'This' 'Is' 'Substraction')
+
+echo ${a[@]} ${b[@]} | tr ' ' '\n' | sort | uniq -u
