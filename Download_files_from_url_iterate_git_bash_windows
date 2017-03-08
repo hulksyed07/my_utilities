@@ -7,3 +7,7 @@ do
    curl -O -J -f -u my_user_name:my_password http://dummy.com/docs/download?id=$doc_id 2>&1
    echo -e '------------------------------------------\n\n'
 done
+
+
+#command to be executed to call this file
+# ./download_files.sh > download_files.log
