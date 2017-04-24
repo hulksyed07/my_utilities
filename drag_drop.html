@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function drag(ev) {
+			ev.dataTransfer.setData("text", ev.target.outerHTML);
+		}
+
+		function drop(ev) {
+			ev.preventDefault();
+		    var data = ev.dataTransfer.getData("text");
+		    ev.target.innerHTML = data;
+		}
+
+		function dragComplete(ev) {
+			ev.target.remove();
+		}
+
+		function allowDrop(ev) {
+		    ev.preventDefault();
+		}
+
+
+	</script>
+</head>
+<body>
+	<div id="div_1" style="width: 300px; height: 300px; float: left;border: 2px solid; border-color: blue; background-color: yellow;">
+		<img id="drag_1" src="dummy.png" alt="dummy Image" draggable="true" ondragstart="drag(event)" ondragend="dragComplete(event)" height="100" width="100" />
+		</span>
+	</div>
+
+	<div id="div_2" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 300px; height: 300px; position: relative; margin-left: 400px;border: 2px solid; border-color: red; background-color: yellow;">
+	</div>
+</body>
+</html>
