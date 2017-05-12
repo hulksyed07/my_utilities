@@ -1,0 +1,16 @@
+zypper -n install mysql
+
+/etc/init.d/mysql start
+
+	
+chkconfig mysql on
+
+mysql_secure_installation
+
+# Optional for Ruby setup
+zypper install mysql-devel
+gem install mysql2
+
+
+
+http://datascientist.mabs.me/how-to-install-mysql-on-suse-linux-enterprise-11/
