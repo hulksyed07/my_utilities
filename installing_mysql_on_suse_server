@@ -159,3 +159,32 @@ zypper install curl-devel
 gem install rack -v=1.6.4
 gem install passenger -v=5.0.10 --conservative
 passenger-install-apache2-module
+
+gem install crypto
+
+
+
+
+# Using capistrano for deployment
+Go to root path of the application and fire the below command:
+
+capd install
+
+Select Stage:
+1. production
+2. qa
+3. integration
+4. devutility
+Please select: 4
+
+ ** Database config doesn't exist, creating ...
+How many databases are there? [0-9]: 1
+What type of database:
+1. MySQL
+2. Oracle
+Please select: 1
+What is the host where the MySQL Server is?
+What is the database name?
+What is the database user account? 
+What should the database password be for the application?:
+
