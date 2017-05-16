@@ -142,3 +142,20 @@ Bye
 
 zypper install mariadb-devel
 
+
+
+
+
+
+# INSTALL APACHE PASSENGER ON SUSE 12
+
+https://lizards.opensuse.org/2010/05/28/how-to-set-up-a-production-server-for-your-rails-app/
+
+zypper in apache2
+zypper install apache2-devel
+zypper install curl-devel
+
+
+gem install rack -v=1.6.4
+gem install passenger -v=5.0.10 --conservative
+passenger-install-apache2-module
