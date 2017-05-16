@@ -7,7 +7,8 @@ bash
 Arguments
 -c
 \curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-\curl -sSL https://get.rvm.io | bash -s stable --ruby
+\curl -sSL https://get.rvm.io | bash -s stable
+source /etc/profile.d/rvm.sh
 
 rvm install 2.0.0
 
