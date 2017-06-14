@@ -1,0 +1,31 @@
+download instant client 12 from th oracle's website
+
+http://www.oracle.com/technetwork/topics/linuxsoft-082809.html
+
+place it at /opt/oracle
+
+Now run the below command:
+
+
+Edit the bashrc to add the paths:
+
+vi ~/.bashrc
+
+export LD_LIBRARY_PATH="/opt/Oracle/usr/lib/oracle/12.2/client/lib"
+export ORACLE_HOME="/opt/Oracle/usr/lib/oracle/12.2/client"
+
+cd /opt/Oracle/usr/lib/oracle/12.2/client/lib
+     ln -s libclntsh.so.12.1 libclntsh.so
+     
+This is to resolve the below error:
+
+Error Message:
+  Could not compile with Oracle instant client.
+  /opt/Oracle/usr/lib/oracle/12.2/client/lib/libclntsh.so could not be found.
+  You may need to make a symbolic link.
+     cd /opt/Oracle/usr/lib/oracle/12.2/client/lib
+     ln -s libclntsh.so.12.1 libclntsh.so
+     
+In case you get error due to missing sdk then download the sdk from oracles' website and place it inside the lib folder:
+/opt/Oracle/usr/lib/oracle/12.2/client/lib
+
