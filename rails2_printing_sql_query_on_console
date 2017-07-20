@@ -1,0 +1,1 @@
+ActiveRecord::Base.connection.instance_variable_set :@logger, Logger.new(STDOUT)
