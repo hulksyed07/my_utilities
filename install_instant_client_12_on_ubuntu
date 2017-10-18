@@ -29,3 +29,5 @@ Error Message:
 In case you get error due to missing sdk then download the sdk from oracles' website and place it inside the lib folder:
 /opt/Oracle/usr/lib/oracle/12.2/client/lib
 
+
+http://www.rubydoc.info/github/kubo/ruby-oci8/file/docs/install-instant-client.md
