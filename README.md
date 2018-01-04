@@ -11,6 +11,11 @@ export DYLD_LIBRARY_PATH="/opt/oracle/instantclient_11_2"
 export ORACLE_HOME="/opt/oracle/instantclient_11_2"
 
 
+Exit it and check on terminal
+ENV
+
+It should contain the above variables
+
 In case of issues...
 
 
