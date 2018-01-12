@@ -1,0 +1,5 @@
+https://community.atlassian.com/t5/Bitbucket-questions/How-to-get-the-list-of-files-from-a-merge-commit-id/qaq-p/217928 
+
+git log -m -1 --name-only --pretty="format:" commitid
+
+git diff --stat commitid
