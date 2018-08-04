@@ -1,0 +1,32 @@
+
+--custom ordering
+select * from (
+  select 'hello' as name, null as val from dual
+  union
+  select 'yelow' as name, 20 as val from dual
+  union
+  select 'wellow' as name, null as val from dual
+  union
+  select 'zello' as name, 50 as val from dual
+) order by decode(val, 50, 1, null, 2, 20, 3, 4);
+
+--another way
+order by 
+    case 
+       when val = 50 then 1 
+       when val = null then 2
+       when val = 20 then 3
+       else 4
+    end
+    
+    
+--handling order in nulls:
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+union
+select 'wellow' as name, null as val from dual
+union
+select 'zello' as name, 50 as val from dual
+) order by val desc nulls first;
