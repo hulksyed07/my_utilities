@@ -91,3 +91,49 @@ you can enter the below values in prompt:
 &col_name: val
 &where_clause: name = 'hello'
 &order_clause: name DESC
+
+--To avoid manually inserting this value again and again you can set this value in Define which would be valid for that whole session
+
+DEFINE nam='hello';
+
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+union
+select 'wellow' as name, null as val from dual
+union
+select 'zello' as name, 50 as val from dual
+) where name = '&nam';
+
+UNDEFINE nam;
+
+--To change the prompt message you can use the below way, variable will persist for the session:
+ACCEPT NAM PROMPT 'Please enter the name of user';
+
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+) where name = '&nam';
+
+UNDEFINE nam;
+
+
+-- If you define a variable using && then it will persist for the whole session and will not ask for its value again and again
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+) where name = '&&nam';
+
+UNDEFINE nam;
+--so it assigns and defines at the same time when user is prompted for input;
+-- If using double ampersand followed by single ampersand for same variable in same query then the value
+will be directly transferred to the single ampersand
+
+select &&col_name from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+) ORDER by &col_name;
