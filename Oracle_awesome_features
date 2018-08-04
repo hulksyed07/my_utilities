@@ -60,3 +60,34 @@ fetch first 50 percent rows only
 
 -- in case  of offset with percentage percentage will be calculated on master set and not after the offset
 -- in case of fetch n rows with ties in order by val it will fetch n+1 or n+2 records in case two records have same values
+
+
+--Substitution variables
+-- use single ampersand to use value on run time and delete the variable after use:
+
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+) where name = '&nam'
+-- val = &val;
+--This will give a prompt on SQL developer and you need to enter the value of &nam
+--Use single quote for string values
+--Dont use single quote for numeric values
+--you can ue multiple substitution variables too like shown below:
+
+select name, &col_name from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+union
+select 'wellow' as name, null as val from dual
+union
+select 'zello' as name, 50 as val from dual
+) where &where_clause
+Order by &order_clause;
+
+you can enter the below values in prompt:
+&col_name: val
+&where_clause: name = 'hello'
+&order_clause: name DESC
