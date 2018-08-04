@@ -30,3 +30,33 @@ select 'wellow' as name, null as val from dual
 union
 select 'zello' as name, 50 as val from dual
 ) order by val desc nulls first;
+
+--Order by first column followed by second column
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+union
+select 'wellow' as name, null as val from dual
+union
+select 'zello' as name, 50 as val from dual
+) order by 1 ASC, 2 DESC
+
+--fetch n rows clause
+select * from (
+select 'hello' as name, null as val from dual
+union
+select 'yelow' as name, 20 as val from dual
+union
+select 'wellow' as name, null as val from dual
+union
+select 'zello' as name, 50 as val from dual
+) order by val
+fetch first 50 percent rows only
+--fetch first 3 rows only
+--offset 1 rows fetch next 3 rows only
+--offset 2 rows fetch 50 percent rows only
+--fetch first 2 rows wth ties;
+
+-- in case  of offset with percentage percentage will be calculated on master set and not after the offset
+-- in case of fetch n rows with ties in order by val it will fetch n+1 or n+2 records in case two records have same values
