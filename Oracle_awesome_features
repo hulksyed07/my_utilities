@@ -137,3 +137,20 @@ select 'hello' as name, null as val from dual
 union
 select 'yelow' as name, 20 as val from dual
 ) ORDER by &col_name;
+
+--To prevent Oracle from considering '&' as variable prompt you can set DEFINE OFF:
+SET DEFINE OFF;
+select * from dual where name= 'R&D'
+
+--You can set VERIFY ON/OFF to print the SQL statement in script output before and after the substitution:
+SET VERIFY ON;
+select * from (
+select 'hello' as name, null as val from dual
+) where name = '&nam';
+
+script output >> old: select * from (
+                      select 'hello' as name, null as val from dual
+                      ) where name = '&nam';
+                 new: select * from (
+                      select 'hello' as name, null as val from dual
+                      ) where name = 'hello';
