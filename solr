@@ -45,3 +45,103 @@ name=<core_name>
 
 -----------------------------------------
 
+schema.xml file
+schema.xml contains the information about
+
+Solr fields and
+How the fields are analyzed and filtered during searches.
+The sample schema.xml code is shown below.
+
+Example:
+
+<fieldType name="wc_text" class="solr.TextField" positionIncrementGap="110">
+<analyzer type="index">
+<tokenizer class="solr.WhitespaceTokenizerFactory"/>
+<filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
+<filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1"
+catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="0" preserveOriginal="1"/>
+<filter class="solr.LowerCaseFilterFactory"/>
+<filter class="solr.SnowballPorterFilterFactory" language="English" protected="protwords.txt" />
+<filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+</analyzer>
+</fieldType>
+
+
+***********************************************************************************************************
+
+Java Installation on Ubuntu
+In order to install Java 8 on Ubuntu, you need to enable additional repository to your system. This can be achieved by executing the below commands.
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+Java 8 can be installed by executing the below command.
+sudo apt-get install oracle-java8-installer
+The following command helps you to set Java 8 as your default Java version.
+sudo apt-get install oracle-java8-set-default
+By now, java version “1.8.0_131” is installed in your System.
+
+------------------------------------------------------------
+Solr Installation on Ubuntu
+The required Solr version can be downloaded from its official site. You can also download Solr 7.4.0 by executing the following command.
+sudo wget http://www-eu.apache.org/dist/lucene/solr/7.4.0/solr-7.4.0.tgz
+The Solr service installer shell script is extracted from the downloaded Solr archive file. The following command is used to run the installer.
+tar xzf solr-7.4.0.tgz solr-7.4.0/bin/install_solr_service.sh --strip-components=2
+sudo bash ./install_solr_service.sh solr-7.4.0.tgz
+Now the Solr is installed on your system. You can check the status by executing the following command.
+sudo service solr status
+
+Access Solr Admin Panel
+The default port for Solr is 8983.
+
+The following link helps you to access Solr port in your browser where you will get the Solr dashboard.
+
+https://hostname:8983/
+------------------------------------------------------------
+
+Solr Installation on Windows Environment
+The following steps help you to install Solr on Windows.
+
+Visit the homepage of Solr and click on the download button.
+To get an index of Solr, select any one of the Index. From there download the file with the name Solr-7.4.0.zip.
+Now the file from the downloads folder is moved to the required directory and then unzip it.
+After downloading the Solr file and extracting it on C drive, you can use the following command to start the Solr.
+
+C:\>cd solr-7.4.0/bin
+C:\solr-7.4.0\bin>solr start
+The Solr Installation can be verified by accessing the following link in the browser.
+
+http://localhost:8983/
+You will see the Apache Solr User interface dashboard, once the installation is successful.
+
+
+------------------------------------------------
+
+Basic Commands Used in Solr
+Starting Solr:
+
+Once the Solr is installed on your system, you need to browse to the bin folder in the Solr home directory and execute the following command to start the Solr.
+
+sudo service solr start
+Starting Solr in the foreground:
+
+The above start command helps you to start the Solr in the background. You can also start Solr in the foreground by executing the following command.
+
+sudo service solr start –f
+
+Starting Solr in another port: You can start Solr in another port by using -p option of the start command followed by the port number. The command is as follows:
+
+sudo service solr start -p <port_number>
+Stopping Solr: Solr can be stopped by executing the following command.
+
+sudo service solr stop
+Restarting Solr: The restarting command stops Solr for 5 seconds and starts it again. The following command helps to restart Solr.
+
+sudo service solr restart
+
+Solr help command: The Solr prompt usage and its options can be checked by using the following help command.
+
+sudo service solr -help
+Solr status command: The information related to the version, memory usage, etc. of Solr can be searched and found by executing the following command.
+
+sudo service solr status
+
+------------------------------------------------
