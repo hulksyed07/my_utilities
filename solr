@@ -190,3 +190,47 @@ For example, if you want to delete the core with a name my_solrcore, out of the 
 
 
 
+------------------------------------------------------------------
+
+Adding Documents Using Solr Web Interface
+Step 1: Open the Solr Admin Interface by accessing the below link:
+
+http://localhost:8983/
+Step 2: Select the Solr Core and click document option to add the documents.
+
+Step 3: Choose the format of the document to be indexed.
+
+Step 4: Type the document text in the text field.
+
+Step 5: Finally click on Submit button.
+
+-------------------------------------------
+
+Adding Documents Using Java Client API
+The following steps help you to write Java code for adding documents.
+
+Prepare the Solr client
+  String urlString = "http://localhost:8983/Solr/<core_name>";
+  SolrClient Solr = new HttpSolrClient.Builder(urlString).build();
+Prepare the Solr document
+  SolrInputDocument doc = new SolrInputDocument(); 
+Add fields to the document
+  doc.addField("id", "009"); 
+  doc.addField("name", "Tom"); 
+  doc.addField("age","90"); 
+  doc.addField("addr","Banglore");
+
+Add the document to Solr
+  Solr.add(doc);
+Save the changes
+  Solr.commit(); 
+  System.out.println("Documents added"); 
+After writing the code, save the file with file_name.java and run the code by executing the following commands.
+
+  javac <fileName>
+  java <fileName>
+You will see the below output after executing the commands.
+
+Documents Added
+
+-----------------------------------------------
