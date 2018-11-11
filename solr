@@ -145,3 +145,48 @@ Solr status command: The information related to the version, memory usage, etc. 
 sudo service solr status
 
 ------------------------------------------------
+
+Solr Core is a running instance of a Lucene index which includes the whole configuration files required to use it. To perform indexing and searching operations, you need to create a core.
+
+A Solr application can have one or multiple cores.
+
+After installing Solr on your system, you need to connect to the Web Interface of Solr to create Solr Core.
+
+create Solr core. This can be created in two ways.
+
+Using create command
+
+Using create_core command
+
+Creating Solr Core
+Using Create Command: A schema-less core can be created by using the Create Command. This can be created by executing the following command.
+
+sudo su - solr -c "/opt/solr/bin/solr create  -c <core_name> -n data_driven_schema_configs"
+Example:
+
+sudo su - solr -c "/opt/solr/bin/solr create  -c mycollection -n data_driven_schema_configs"
+Using create_core command: The create_core command has the following options.
+
+-c core_name: describes the name of the core that you want to create
+
+-p port_name: port at which you want to create a core
+
+-d conf_dir: configuration directory of the port
+
+Syntax:
+
+sudo su - solr -c "/opt/solr/bin/solr create_core  -c <core_name> -n data_driven_schema_configs"
+
+
+Deleting Solr Core
+You can also delete the cores, that is created earlier.
+
+First you need to go to bin directory and then execute the following command.
+
+ ./solr delete -c <core_name>
+For example, if you want to delete the core with a name my_solrcore, out of the two cores my_solrcore and my_solrcore1, you need to execute the below command.
+
+ ./solr delete -c my_solrcore
+
+
+
