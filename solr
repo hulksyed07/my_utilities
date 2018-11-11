@@ -234,3 +234,144 @@ You will see the below output after executing the commands.
 Documents Added
 
 -----------------------------------------------
+
+Adding Documents Using Post Command
+Solr features a post command in its bin/ directory. Hence, move the file to be indexed into the bin directory before indexing it using the post command.
+
+Let us consider the below XML code and assume that the file is saved with the name sampleadd.xml.
+
+<add>
+<doc>
+<field name = "id">001</field>
+<field name = "first name">Ramu</field>
+<field name = "last name">Chowdary</field>
+<field name = "phone">9812365495</field>
+<field name = "city">Chennai</field>
+</doc>
+</add>
+The above XML file can be added using the post tool, by executing the following command.
+
+./post -c <Core_Name> <file_name>
+
+
+--------------------------------------------
+
+Updating Documents Using Post Command
+The following XML file helps you to update a field in the existing document.
+
+<add>
+<doc>
+<field name = "id">001</field>
+<field name = "first name" update = "set">Rajshekar</field>
+<field name = "last name" update = "add">Chava</field>
+<field name = "phone" update = "add">9956321472</field>
+<field name = "city" update = "add">Pune</field>
+</doc>
+</add>
+The fields in the documents can be updated by executing the following command.
+
+./post -c <core_name> <file_name>
+
+----------------------------------------------
+
+Updating Document Using Java Client API
+The following steps help you to build a Java code to update the documents.
+
+Prepare the Solr Client
+String urlString = "http://localhost:8983/Solr/my_core"; 
+SolrClient Solr = new HttpSolrClient.Builder(urlString).build(); 
+Prepare the Solr document
+ SolrInputDocument doc = new SolrInputDocument(); 
+
+  UpdateRequest updateRequest = new UpdateRequest();  
+  updateRequest.setAction( UpdateRequest.ACTION.COMMIT, false, false);    
+  SolrInputDocument myDocumentInstantlycommited = new SolrInputDocument();  
+  
+  myDocumentInstantlycommited.addField("id", "002"); 
+  myDocumentInstantlycommited.addField("name", "Rahul"); 
+  myDocumentInstantlycommited.addField("age","47"); 
+  myDocumentInstantlycommited.addField("address","Chennai"); 
+
+Update the documents
+updateRequest.add( myDocumentInstantlycommited);  
+Save the Changes
+UpdateResponse rsp = updateRequest.process(Solr); 
+System.out.println("Documents Updated");
+The given code is compiled by executing the below commands
+
+  javac fileName
+  java fileName
+On executing the above command, the output is displayed as below
+
+Documents Updated
+------------------------------------------------
+
+Deleting Documents from Solr Index
+Documents can be deleted from the Solr Index by specifying the document ids between the <delete> and </delete> tags.
+
+For Example:
+
+<delete>   
+<id>003</id>
+<id>005</id>
+<id>004</id>
+<id>002</id>
+</delete>
+The documents with the ids mentioned in the XML code are deleted by executing the following post command.
+
+./post -c <core_name> <file_name>
+
+--------------------------------------------------
+
+Deleting a Field Using Post Command
+Sometimes you need to delete a document based on the field rather than id. In that case, you need to define the name and the value of the field within <query> and </query> tags.
+
+Syntax:
+
+<delete> 
+   <query>name:value</query> 
+</delete>
+Once the code is ready, you need to execute the following post command to delete a field.
+
+./post -c <core_name> <file_name>
+
+----------------------------------------------
+
+Deleting All Documents Using Post command
+If you want to delete all the documents in the index, you have to pass the symbol ":" between the two tags <query> and </query>.
+
+Syntax:
+
+<delete>
+<query>*:*</query>
+</delete>
+Documents are deleted by executing the following command.
+
+./post -c <core_name> <file_name>
+
+
+--------------------------------------------------
+
+Deleting Documents Using Java Client API
+The following Java code helps you to delete the documents from the Apache Solr Index.
+
+Prepare the Solr client
+String urlString = "http://localhost:8983/Solr/<core_name>";
+SolrClient Solr = new HttpSolrClient.Builder(urlString).build();
+Prepare the Solr document
+SolrInputDocument doc = new SolrInputDocument();   
+Delete the documents from Solr
+Solr.deleteByQuery("*");        
+Save the document
+Solr.commit(); 
+ System.out.println("Documents deleted"); 
+Run the Java code by executing the below commands.
+
+$ javac fileName
+$ java fileName
+After execution, the output is shown below.
+
+Documents deleted
+------------------------------------------------
+
+
