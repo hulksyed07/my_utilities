@@ -1,0 +1,31 @@
+What is Microservice?
+Microservice is developed based on business features and deployed independently by an automated deployment machinery.
+
+There is less centralized management of Microservices that may be written in various programming languages and utilize diverse data storage technologies.
+
+---------------------------------------------------------------------
+Applications are broadly classified into two types:
+
+i) Monolithic Architecture, where an application is built as a single unit.
+
+ii) Microservices Architecture, where many applications (microservices) handle a small portion of the functionality and data.
+---------------------------------------------------------------------
+
+Monolithic Architechture
+
+Benefits:
+
+Faster Initial Development - With one application, it would be relatively easy to add additional features, especially when the application is relatively small.
+Little User Confusion - Developers need not have to learn about different applications, but would be focused towards one application.
+Improved Integration - Features could integrate with each other well and easily.
+
+Disadvantages:
+
+Single Point of Failure - If any single application function or component fails, then the entire application goes down. For example - a web application with separate functions handling tasks like payment, login, and history; a function begins to consume more memory or CPU. In this scenario, the entire application will come to a halt.
+
+Horizontal Scaling - Scaling application can only be accomplished by deploying the same EAR/WAR packages in more servers. Every single copy of the application in different servers will use the same number of primary resources, which is usually not an effective way to design.
+
+As application grows, the code base grows with it, which can overload IDE every time it loads the application. This definitely reduces developer productivity.
+Substantially less iteration - a small change made to any part of the application, requires the entire monolith to be rebuilt and deployed.
+Maintenance costs will shoot up exponentially with site size.
+High set-up costs - In order to get each new volunteer up and running, the larger the application, the more difficult this would be.
