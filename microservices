@@ -29,3 +29,54 @@ As application grows, the code base grows with it, which can overload IDE every 
 Substantially less iteration - a small change made to any part of the application, requires the entire monolith to be rebuilt and deployed.
 Maintenance costs will shoot up exponentially with site size.
 High set-up costs - In order to get each new volunteer up and running, the larger the application, the more difficult this would be.
+
+---------------------------------------------------------------------
+
+Microservice Style
+
+Build applications as suites of services (Modular approach)
+
+Each microservice exposes a common API accessed through the network (as opposed to inter-process communication or shared memory on the same machine).
+
+API calls are stitched mostly on the server to produce a page, although few of this work is executed by the client querying individual microservices.
+
+Big enterprise players such as Amazon, Netflix, Uber, Yelp and eBay have adopted Microservices. Services are
+
+Independently deployable
+Scalable
+Each service offers a secure module boundary, allowing different services to be written in different programming languages.
+
+Advantages:
+
+Improved fault isolation: Larger applications can remain largely unaffected by the failure of a single module with microservice style adoption.
+Removes Dependency: Eliminates long-term commitment to any single technology stack.
+Easy Understanding: With the split of functionality, it gives more room for new developers to understand the functionality of a service and make enhancements easily.
+Easy Deployment: Microservices-based applications are deployed inside containers providing better management.
+
+Disadvantages:
+
+Complexity - Deploying microservices can be a little complex, requiring coordination among multiple services, which may not be as straightforward as deploying a monolith.
+Multiple DBs - Managing multiple databases and transaction management could be painful.
+Testing - Testing could be little cumbersome, as each dependent service needs to be confirmed before one can start testing.
+Coordination - Handling requests across multiple independent services requires proper workflow management. There can be a scenario where one of the services may not be responding or remote calls experiencing latency.
+
+---------------------------------------------------------------------
+The three golden rules of Microservices include:
+
+Componentize
+Collaborate
+Connect
+
+---------------------------------------------------------------------
+
+Microservice vs SOA(Service Oriented Architechture)
+
+Miscroservice is a subset of SOA. SOA is a term covering whole Enterprise architechture which may comprise of more than one applications
+
+     Microservice                               Service Oriented Architechture
+A single Distributed system                 Large Distributed system
+Accelerated Realization of Benefits         Overall Business transformation
+Specialization of SOA                       Large scope spanning multiple systems
+
+
+
