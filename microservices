@@ -230,6 +230,25 @@ The security aspect, related to the identity of the requestor services to handle
 
 The access token is issued upon successful authorization which is used for authenticating all requests.
 -----------------------------------------------------------------------
+Token Implementions:
 
-SAML: Security Assertion Markup Language
+SAML: Security Assertion Markup Language (XML based not good for mobile as mobile does not support XML. Complex to implement)
+Simple Web Token (Too simple)
+JWT: JSON web token (Combination of both Simple web token and SAML)(Microsoft yahoo google together came up and accepted this)
+-----------------------------------------------------------------------
+High level structure of JWT token is:
+headers.payload.signature
+
+Header is base 64 encoded
+Payload contains the claims that this token puts forward like (admin: true, exp: 132038938 miliseconds)
+Signature contains header and payload and secret information to validate if the token is not tampered with
+
+-----------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+
+
 -----------------------------------------------------------------------
