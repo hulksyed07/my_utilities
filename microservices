@@ -90,3 +90,64 @@ Bounded Context
 
 ---------------------------------------------------------------------
 
+How do clients of a service/router know about the available instances of a service? The solution is Service Registry.
+
+Service Registry acts as a database of services, their instances, and corresponding locations.
+Service instances are registered with the service registry on startup and deregistered on shutdown.
+Clients of the service/router query the service registry to find the available instances of a service.
+Some of the famous service registries include - Eureka, Apache Zookeeper, Consul, etc.
+
+-----------------------------------------------------------------------
+Service instances have dynamically assigned network locations. Service instances change dynamically due to Auto-scaling, Failures and Upgrades.
+
+The client needs Service Discovery Mechanism to over come this. There are two types of Service Discovery:
+
+Client-side discovery
+Server-side discovery
+-----------------------------------------------------------------------
+
+The clients take the onus and are responsible for determining the network locations of available service instances by querying a service registry. This is a straight forward approach.
+
+The clients use intelligent application-specific load-balancing decisions using hashing. But on the other hand, all service clients should have this client-side service discovery logic for each programming language and framework.
+
+Netflix OSS is a good example for this.
+
+-----------------------------------------------------------------------
+
+The client makes a request via a load balancer. The load balancer queries the service registry and routes each request to an available service instance.
+
+AWS Elastic Load Balancer (ELB) is an example of a server-side discovery router.
+
+Main benefit
+
+Details of discovery are abstracted from the client, thus eliminating the need to implement discovery logic for each programming language and framework.
+-----------------------------------------------------------------------
+It functions similar to the electrical circuit breaker.
+
+When the number of consecutive request failures crosses a threshold,
+
+The circuit breaker trips for limited timeout period and all attempts to invoke the remote service fail immediately.
+After the expiry of the timeout, the circuit breaker allows a limited number of test requests to pass through.
+If the requests are successful, the circuit breaker continues normal operation. If there is a failure, the timeout period starts again.
+
+-----------------------------------------------------------------------
+
+Queries in a microservice architecture are implemented through Command Query Responsibility Segregation (CQRS). In CQRS, the application is split into two components:
+
+command-side takes care of creating, updating, and deleting requests and emits events when data changes.
+query-side executes queries against one or more materialized views, which are kept updated by subscribing to the stream of events released when data changes.
+Takeaways
+
+CQRS supports event driven architecture.
+Few complex domains may be simpler to tackle by utilizing CQRS.
+While handling high-performance applications, CQRS allows separation of a load from reads and writes, allowing to scale independently.
+
+-----------------------------------------------------------------------
+
+EVENt Driven architechture
+
+The Microservices trigger and update the business entities based on any event and publishes an event when some action occurs.
+
+For example - A payment Microservice, publishes an event when something notable happens, such as when it updates a business entity. Other microservices inventory, subscribe to those events. When a microservice gets an event, it can update its business entities, which might result in more events being published.
+
+-----------------------------------------------------------------------
