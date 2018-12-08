@@ -293,3 +293,21 @@ Distributed tracing - Each external request is assigned a Unique ID, which is pa
 
 Health check API - Returns the health of the service. A load balancer, service registry, or monitoring service can ‘ping’ this API to verify service instance availability.
 -----------------------------------------------------------------------
+Few best practices listed down here.
+
+Keep Microservices small enough to stay focused and big enough to add value.
+
+Always maintain documentation of all services in common place.
+
+In Microservices, eventual consistency is always regarded as your friend.
+
+Distribute work with load balancers.
+
+Each Microservice should have their private data.
+
+Store data in databases but not in ephemeral service instances.
+
+Layer your security and do not write your crypto code!
+
+Aggregation services present on the network boundaries can translate for external work.
+-----------------------------------------------------------------------
