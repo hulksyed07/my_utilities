@@ -245,10 +245,51 @@ Signature contains header and payload and secret information to validate if the 
 
 -----------------------------------------------------------------------
 
+Microservice Chassis
+Development of any new application, requires significant time to put in place, the mechanisms to handle cross-cutting concerns such as:
+
+Externalized configuration - credentials, and network locations of external services such as databases and message brokers.
+Logging - configuring of a logging framework (for audit trail) such as log4j or logback.
+Health checks - to check the application status, a URL that a monitoring service can “ping” to determine the health of the application.
+Metrics - track application performance measurements to know more about what and how the application is doing.
+-----------------------------------------------------------------------
+Pattern: Microservice chassis
+Examples of cross-cutting concern include:
+
+Externalized configuration - includes credentials, and network locations of external services such as databases and message brokers
+Logging - configuring of a logging framework such as log4j or logback
+Health checks - a url that a monitoring service can “ping” to determine the health of the application
+Metrics - measurements that provide insight into what the application is doing and how it is performing
+Distributed tracing - instrument services with code that assigns each external request an unique identifier that is passed between services.
 
 -----------------------------------------------------------------------
+With Microservice chassis, it becomes effortless and quick to get started with developing a microservice.
+
+Some of the popular Microservice chassis frameworks include:
+
+Java - Spring Boot and Spring Cloud, Dropwizard
+Go - Gizmo, Micro, Go kit
+Challenges Adopting to a new programming language or framework would be difficult, as there is need for microservice chassis for each programming language/framework
+-----------------------------------------------------------------------
+Observability patterns focus on:
+
+Application logging
+Application metrics
+Audit logging
+Distributed tracing
+Exception tracking
+Health check API
 
 -----------------------------------------------------------------------
+Application logging - Errors, warnings, information and debug messages about action are tracked in the log file.
 
+Application metrics - Gathers statistics about individual operations of each service and aggregates metrics in centralized metrics service, for reporting and alerting.
 
+Audit logging - Records user activity in a database.
+
+Exception tracking - Report all exceptions to a centralized exception tracking service that aggregates and tracks exceptions and notifies developers.
+
+Distributed tracing - Each external request is assigned a Unique ID, which is passed to all services involved in handling the request and also included in application log messages.
+
+Health check API - Returns the health of the service. A load balancer, service registry, or monitoring service can ‘ping’ this API to verify service instance availability.
 -----------------------------------------------------------------------
