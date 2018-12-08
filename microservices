@@ -151,3 +151,85 @@ The Microservices trigger and update the business entities based on any event an
 For example - A payment Microservice, publishes an event when something notable happens, such as when it updates a business entity. Other microservices inventory, subscribe to those events. When a microservice gets an event, it can update its business entities, which might result in more events being published.
 
 -----------------------------------------------------------------------
+
+Each service instance must be offered with appropriate I/O resources, memory, and CPU. Also deploying services must be quick, cost-effective, and reliable.
+
+Service Deployment is classified into three types-
+
+Multiple Service Instances per Host Pattern
+Service Instance per Host Pattern
+Service Instance per Container Pattern
+
+-----------------------------------------------------------------------
+Multiple Service Instances per Host PatternService Instance per Host Pattern
+
+Run multiple service instances provisioned in one or more physical or virtual hosts. The two flavors of this pattern -
+
+Each service instance acts as process or a process group
+Run multiple service instances in the same process or process group
+
+-----------------------------------------------------------------------
+Service Instance per Host Pattern
+
+Here you package each service as a virtual machine (VM) image. e.g., Amazon EC2 AMI. Each service instance is a VM, that is launched using VM image.
+
+Key advantages include:
+
+Each service instance runs in complete isolation. It has a fixed amount of CPU and memory and can’t steal resources from other services.
+Easy to leverage mature cloud infrastructure by leveraging features such as load balancing and auto scaling.
+Netflix video streaming service is the best example for this.
+
+-----------------------------------------------------------------------
+Service Instance per Container Pattern:
+
+Here you will package the service as a (Docker) container image and deploy each service instance as a container.
+
+Containers are a virtualization mechanism at the operating system level. It consists of one or more processes running in a sandbox. One can limit a container’s memory and CPU resources.
+
+Examples of container technologies include Docker and Solaris Zones.
+
+-----------------------------------------------------------------------
+Docker is becoming a prevalent way of packaging and deploying services.
+
+Each service is packaged as a Docker image.
+Each service instance is a Docker container.
+Some of the popular Docker clustering frameworks include:
+
+Kubernetes
+Marathon/Mesos
+Amazon EC2 Container Service
+-----------------------------------------------------------------------
+Key components of REST architecture style that support caching:
+
+Client-Server - Separate the interface from the server
+Client-Stateless - No client contexts stored on the server between requests
+Cacheable - Clients can cache responses, but servers should be clear what could be and could not
+Layered System - a client cannot identify whether this is connecting directly to the server or through an intermediary. Caches/Proxies to be transparent to the layers above them.
+Code on Demand - The server can transmit the code that could be executed in the client.
+Uniform Interface - URLs, URIs some of the standards to identify.
+-----------------------------------------------------------------------
+HTTP 1.1 has set of headers that supports caching. Cache-Control - provides a lot of attributes on caching for both responses & requests.
+
+Responses include public, private, no-cache, no-store, no-transform, proxy-revalidate, maxage that controls the level of caching done.
+
+Expires - mentions when the resource is stale.
+-----------------------------------------------------------------------
+Shared Cache
+Here you will observe multiple web servers using a shared cache/proxy to access service.
+
+This will yield better performance as some data gets cached in between. And all requests will not hit the service.
+-----------------------------------------------------------------------
+Distributed Cache
+With multiple Cache systems, this reduces loading. Internet Cache Protocol (ICP) ensures consistency among the cache systems.
+-----------------------------------------------------------------------
+Local and Remote Cache
+Here, there will be local cache happening within the Web server, which reduces the Network usage, there by providing very high performance.
+-----------------------------------------------------------------------
+
+The security aspect, related to the identity of the requestor services to handle the request, is taken care by API Gateway. The API Gateway authenticates the user and transfers an access token (e.g., JSON Web Token) that securely recognizes the user in each request to the services.
+
+The access token is issued upon successful authorization which is used for authenticating all requests.
+-----------------------------------------------------------------------
+
+SAML: Security Assertion Markup Language
+-----------------------------------------------------------------------
