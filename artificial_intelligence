@@ -1,0 +1,20 @@
+Why is AI different?
+Applications have always had some form intelligence - using mechanisms such as Rule engines, analytics and models. The crucial insight into why AI approaches are different is the difference between traditional Models and Data-driven Models. AI algorithms use data to improve their logic, unlike earlier approaches that required offline programmatic interventions to change algorithms.
+----------------------------------------------
+
+Machine Learning is a specific technique within Artificial Intelligence that deals with algorithms that can learn from data.
+
+----------------------------------------------
+The arrival of distributed Big Data processing platforms has made the ability to analyze and infer Natural Language using algorithms that have been trained on existing corpus of language samples is now mainstream. We see this everywhere from Siri, Alexa and Google Voice Assistant. The earlier approach of encoding grammar as rules has given way to a more data-driven approach that trains models using real life use of language/s.
+----------------------------------------------
+Recent AI techniques such as Deep Learning have enabled the ability to recognize objects from pictures and videos with more efficiency than human vision! These see usage in autonomous vehicles and security systems.
+----------------------------------------------
+Get your AI Lingo Right: Part 1
+Expert systems: Use algorithms such as Logistic Regression & Support Vector Machines in situations like flight tracking systems, clinical systems and financial advisory, and automated stock trading applications.
+
+Natural Language Processing: Algorithms that you can see in day to day applications like Google or Siri’s voice recognition, search engines and sentiment analysis.
+----------------------------------------------
+Get your AI Lingo Right: Part 2
+Neural Networks - That use complex data structures that resemble neurons in our brains to build pattern recognition models that learn from input data and reinforce themselves based on errors. Deep Learning is a specific kind of Neural Network that involves using many layers of “neurons” that has recently resulted in huge improvements in areas such as face and object detection, character and handwriting recognition.
+
+Robotics - Industrial robots for manufacturing situations, such as moving, spraying, painting, precision checking, drilling and coating etc.
