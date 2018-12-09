@@ -1,0 +1,22 @@
+According to Wikipedia, The Internet of Things (IoT) is the interconnection of uniquely identifiable embedded computing devices within the existing Internet infrastructure. In other words, the growing base of network connected sensor devices that are able to communicate, create and update data over the internet is the Internet of Everything.
+------------------------------------------------------------
+
+IoT has gathered momentum recently as a result of the following :
+
+Availability of low cost, high computing power processors and miniaturized architectures such as Raspberry Pi and Arduino
+
+Low power usage architectures that have enabled ubiquitous deployment of sensor devices
+
+Scalable cloud based IoT management platforms to analyze sensor data
+
+-----------------------------------------------------
+There are two parallel tracks in IoT technologies
+
+Wearable - Google's Android Wear and a host of fitness, activity and health trackers are part of this ecosystem
+
+Embedded - Arduino, Raspberry Pi and Intel's Galileo are among the more popular embedded IoT device architectures
+
+Some of the popular IOT platform providers include GE Predix, RTI, ThingWorx, TCUP.
+
+Some of the top IoT technologies predicted by Gartner are Security, Analytics, Device Management, Low-power short-range networks, even stream processing etc.
+-----------------------------------------------------
