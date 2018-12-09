@@ -1,0 +1,27 @@
+Blockchain uses a combination of cryptography and consensus building protocols to enable systems of decentralised trust.
+-------------------------------------------------
+Public vs Private Blockchains
+A public blockchain allows all users to both write and read to the transactional record. Bitcoin is an example of a blockchain powered public ledger. A private blockchain allows only trusted and authenticated users to write or read. The trust mechanisms could be legal contracts between companies.
+-------------------------------------------------
+Blockchain Use Cases
+Smart Contracts - Blockchain can help companies to enforce contracts with customers and other third parties.
+
+Online Identity Management -Rights management for music/video is an example where Blockchain can help create scalable, distributed identity resolution as opposed to risky, centralized trust mechanisms that are vulnerable to hacking.
+
+Medical Records - Blockchain can help create secure, globally available medical records that cut across healthcare providers.
+
+Asset management - Blockchain can enable better ways to manage asset ownership, like land records or share trades.
+-------------------------------------------------
+Blockchain is a distributed transactional ledger that was originally created to enable cryptocurrencies like Bitcoin
+
+Its design enables decentralized trust mechanisms that now see use cases in financial services, healthcare, education and legal services
+-------------------------------------------------
+It is :
+
+Distributed transactional store
+
+Replicates across multiple systems in near real time
+
+Uses cryptography & digital signatures to establish identity & authenticity
+
+Has mechanisms that make it very hard to change historical record
