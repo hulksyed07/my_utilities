@@ -1,0 +1,6 @@
+Service Models for Cloud
+SaaS - Network, OS and Applications are virtualized and provided on demand.
+
+PaaS - Network and OS are virtualised and provided on demand. Application development is made agile with managed DevOps tools for continuous integration.
+
+IaaS - Only network/CPU is provided. This is the traditional Data centre model.
