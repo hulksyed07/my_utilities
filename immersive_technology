@@ -1,0 +1,30 @@
+What is Immersive Technology
+Any technology that enables digital experience in the realm of the physical world is Immersive Technology.
+
+The focus of Immersive Technology is to combine a virtual, computer-generated world with the physical world such that it forms a perception to the human user of experiencing both the worlds at the same time.
+----------------------------------------
+Immersive Technologies come in 3 flavors:
+
+Virtual Reality (VR) - Head Mounted Devices (HMD) Completely cut off from real world and presents simulated world that is the only perception of the world. User interactions (Gestures, Speech, Movement) cause a reaction within the virtual world.
+Augmented Reality (AR) - Devices (Mobiles, HMDs) that present both virtual and real worlds forming a dual perception of the world. For a user, the virtual world does not recognize the physical, but both are controlled by user interactions.
+Mixed Reality (MR) = Devices (Mobiles, HMDs) that present both the worlds such that the virtual world recognizes the physical and creates a close-to-reality perception of the world.
+----------------------------------------
+A 3D world is delivered through a projector that is reflected through mirror’s/prisms into the eye. User interacts with the digital world using gestures – such as hand movements, fingers, full-body movement etc., gaze – which is locking on a virtual object with eyes, Voice – by speaking directly with the system. All these devices track the user interactions by using Sensors and Microphones within the HMD.
+
+Gaze is tracked when an IR sensor reflects an IR beam into the light, and a receptor calculates the angle of reflection from the cornea to map it into the real world object.
+
+A technique known as real world mapping is used to identify objects in the real space.
+
+----------------------------------------
+The Microsoft Hololens is an HMD that uses specialized hardware that runs on Windows 10 OS and delivers a virtual world as a Universal Windows Platform (UWP) App.
+
+It is a Mixed Reality device that works on the principles described earlier. It maps out the real world objects using Area and Position mapping mechanism – that draws out the existing surfaces in the room before starting the virtual world.
+
+The device allows all of the user interactions discussed earlier, and is mounted with sensors, speakers and microphones to create the experience of mixed reality.
+
+----------------------------------------
+More on Microsoft Hololens
+Software development for the Microsoft Hololens is done using Visual Studio. It creates a UWP App on Windows 10 OS that is targeted to the Hololens hardware.
+The virtual world can be created either directly using Visual Studio and Microsoft DirectX programming in C++ OR by using gaming engines such as Unity, Vuforia or Cocos Engine. Unity is the most popular development platform.
+The design of the virtual world is done in Unity using the Unity Editor, which then exports a VS solution. This solution is compiled to form the UWP App that executes on the Hololens.
+Microsoft provides a Holo emulator which can be used to create and test programs.
