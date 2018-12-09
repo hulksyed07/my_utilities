@@ -1,0 +1,51 @@
+Why is Big Data different?
+The 7Vs: Volume
+Traditional analytics and BI systems did not (and cannot) deal with the sheer volume of data being generated in today’s hyper-connected world. Internet applications like Social Media and IoT sensors have created volumes of data that are several orders of magnitude larger than anything encountered before. This requires completely new techniques to gather and organize the data before we get to processing it.
+
+The 7Vs: Velocity
+Traditional analytics and BI systems worked on pre-generated data that flowed in batch mode to data warehouses for analysis. However, in the Digital world, the velocity of data creation is so fast that Big Data analytics require the ability to stream and process data in near real time. This requires distributed computing approaches and high levels of availability in analytics components.
+
+The 7Vs: Variety
+Traditional analytics and BI dealt largely with structure data from application databases. Modern day Big Data deals with a huge variety of data sources with diverse data structures and many unstructured sources as well - such as natural language, audio and video data.
+
+The 7Vs: Veracity
+Veracity focuses on data accuracy. Veracity ensures data is more truthful and also verifiable. Big data holds lot of noisy, messy, and erroneous data. Building accurate but not valid data in a particular context does not help in yielding value. Hence validity of data is the fundamental requirement to perform accurate analysis.
+
+The 7Vs: Visualization
+Leveraging charts/graphs/dashboards over large amounts of complex data provides lot of valuable insights rather conveying them over spreadsheets/reports with full of numbers and formulas.With Big data to deal with innumerous variables and parameters, providing appropriate visualization, insights and findings require powerful visualization packages.
+
+The 7Vs: Variability
+Variability is definitely different from variety. An icecream vendor may offer 6 different flavors of icecream, and if you get the same flavor every day and it tastes differently every day, that is variability. Variability refers to rapidly changing meaning of a data and it could have huge impact on data homogenization.Variability is meant for performing sentiment analyses.
+
+The 7Vs: Value
+With increasing interest in Big Data and the associated cost to build it being really huge, the potential value lies in drawing the accurate and meaningful analysis with sufficient information and insights. After addressing volume, velocity, variety, variability, veracity, and visualization – which consumes lot of time, effort and resources – one would be more interested on the what value organization would getting from the data.
+
+-----------------------------------------------------------------
+Big Data life cycle
+
+  Ingesting Data
+
+  Persisting Data in storage
+
+  Computing and Analysing Data
+
+  Data Visualisation
+
+-----------------------------------------------------------------
+Ingesting Data
+  Data Ingestion is the process of obtaining & importing data for immediate use or storage. This could happen in real time (Data Streaming) or in batch mode. Some tools in this space: Apache Sqoop, Flume, Gobblin framework, Kinesis, Splunk
+  Lambda architecture can be employed to ingest data streams to view in real-time and process batch data simultainteously in a single architecture.
+Persisting Data in storage
+  Big Data storage technologies are specially designed to deal with the scale, rapid retrieval & parallel processing requirements of massive data sets. Hadoop, Cassandra & Cloudera (also Hadoop based) are popular technologies in this space.
+Computing and Analysing Data
+  Big Data analysis requires distributed processing capabilities and techniques like MapReduce. Tools like Apache Spark, Storm & Flink are popular. Splunk is also a popular platform to analyze large amounts of machine generated data (like logs).
+Data Visualisation
+  Once Big Data is processed, visualization frameworks such as d3.js, Tableau and Kibana are popular ways to generate interactive dashboards.  
+-----------------------------------------------------------------
+Summary: Big Data
+Big Data technologies deal with massive, internet scale datasets and are designed to work with both structured and unstructured data from diverse sources
+
+Distributed and Parallel processing techniques such as MapReduce and open source platforms such as Hadoop and Apache Spark have made Big Data affordable and practical for all enterprises
+
+Data Science, the intersection of Statistics, Domain Knowledge and Programming is now among the most in-demand skills in the industry
+-----------------------------------------------------------------
