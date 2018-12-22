@@ -1,0 +1,39 @@
+Ethereum
+
+Permissionless and generic Blockchain platform
+Governed by Ethereum developers
+Mining based on Proof of Work (POW)
+Consensus approached at Ledger level
+
+Smart contract is a software that controls the movement of digital assets amongst parties based on certain rules of negotiation.
+
+Key features:
+Elimination of a third party intervention
+Traceable and Irreversible transactions
+Self Executing and Self Enforcing
+Smart contract in Bitcoin validates transaction only if certain predefined conditions are met whereas ''Ethereum'' allows developers to program their own smart contracts.
+
+-------------------------------------------------------------
+Hyperledger
+
+Modular and permissioned platform
+Governed by Linux foundation
+Multiple consensus approaches - at transaction level
+
+Introduced by Linux foundation, Hyperledger is an open source, modular architecture targeted at businesses that aim to streamline their process leveraging blockchain technology.
+
+Etherum vs Hyperledger:
+As Ethereum is an open and distributed platform where it is impossible to hide a transaction from anyone, on the other hand, hyperledger gives this flexibility.
+-------------------------------------------------------------
+
+R3 Corda
+
+Specialized distributed and permissioned ledger platform
+Governed by R3
+Specific consensus at transaction level
+
+R3 Corda has a unique approach to data distribution where the data is shared only between the genuine participants.
+
+This concept makes Corda popularly known as a DLT that refers to Distributed ledger technology with a difference.
+
+Financial service industry could best leverage this distinct feature of Corda.
