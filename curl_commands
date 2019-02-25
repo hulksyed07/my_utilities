@@ -3,3 +3,6 @@ Posting data with curl command POST
 curl -X POST --data "param_1=hello&param_2=yellow"  http://dummy.com/get_users
 
 curl http://dummy.com/get_users -H 'param_1:hello'
+
+# POST request with json present in file
+curl -vX POST http://dummy.com/get_users -d @data_file.json --header "Content-Type: application/json"
