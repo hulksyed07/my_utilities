@@ -283,4 +283,4 @@ Having clause can also be written before Group clause but not recommended
 At max 2 group functions can be nested like
 Select max(sum(hours))
 FROM tab_1
-Group by category
+Group by category_id
