@@ -200,10 +200,30 @@ THSP or SPTH   Spelled out Ordinal Numbers(for example DDSPTH for FOURTH)
 
 Elements of Date Format Model
 YYYY    Full date in Number
-YEAR    Date spelled out in English
+YEAR    Year spelled out in English
 MM      Two digit value of Montth
+MONTH   MONTH Spelled out in English
 DY      Three letter abbrevaiation of day of week like (FRI, SAT)
 DAY     Full name of Day of week
 
 SSSSS   Seconds past midnight (0 - 86399)
 
+Adding 'fm' in date format removes extra spaces and unnecessary leading 0's (fm stands for format)
+select to_char(sysdate, 'DD MONTH YYYY') from dual; -- 17 June      2002
+select to_char(sysdate, 'DD MONTH YYYY') from dual; -- 05 January   2002
+
+select to_char(sysdate, 'fmDD MONTH YYYY') from dual; -- 17 June 2002
+select to_char(sysdate, 'fmDD MONTH YYYY') from dual; -- 5 January 2002
+
+select to_char(sysdate, 'fmDD "of" MONTH YYYY') from dual; -- 5 of January 2002
+select to_char(sysdate, 'fmDDsp "of" MONTH YYYY') from dual; -- Five of January 2002
+select to_char(sysdate, 'fmDDth "of" MONTH YYYY') from dual; -- 5th of January 2002
+select to_char(sysdate, 'fmDDspth "of" MONTH YYYY') from dual; -- Fifth of January 2002
+
+fx stands for exact match..
+select * from tab_1 where created_at > TO_DATE('10-11-  2012', 'dd-mm-yyyy'); -- oracle automatically removes space. space is ignored
+select * from tab_1 where created_at > TO_DATE('10-11- 2012', 'fxdd-mm- yyyy'); -- exact match happens
+
+RR format considers 00-49 as 20XX and 50-99 as 19XX whereas YY format considers everything as 20XX
+('01-JAN-70', 'DD-MOM-RR') = 1 JAN 1970
+('01-JAN-70', 'DD-MOM-YY') = 1 JAN 2070
