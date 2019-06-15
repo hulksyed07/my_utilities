@@ -266,3 +266,21 @@ In case u want to still count null values too then need to use NVL function insi
 COUNT(NVL(column_name, 0))
 All group functions ignore null values
 The min, max, avg, sum, count(column_name) functions ignore Null values
+
+ORA-00937: Not a Single Group Group Function. Occurs when you miss to write Group By Clause and write select column_1, sum(column_2)
+ORA-00979: Not a Group By Expression. This error occurs when you miss a column in group by clause and mention it in select clause
+           Select column_1, column_2, sum(column_3)
+           FROM Tab_1
+           GROUP BY column_1
+ORA-00934: Group function is not allowed here. This error occurs when we try to filter down groups in where clause instead of having clause
+           like "where sum(hours) > 30"
+           instead of "having sum(hours) > 30"
+
+We cannot mention alias column_name in group by clause. However we can do that in Order clause. Select column_1 as col_1 group by column_1 order by col_1
+
+Having clause can also be written before Group clause but not recommended
+
+At max 2 group functions can be nested like
+Select max(sum(hours))
+FROM tab_1
+Group by category
