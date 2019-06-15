@@ -176,3 +176,20 @@ Date + number/24: Adds number of hours to date
 Date RR format: DD-MON-RR
 RR takes either 20th century year or 21st century year
 if RR is between 50 to 99 then it takes 19XX year. If RR is between 0 to 49 then it takes 20XX year
+
+Select MONTHS_BETWEEN(SYSDATE, HIRE_DATE) from tab_1;
+using (sysdate - hire_date)/30 will not give accurate result as all months are not of 30 days
+
+ADD_MONTHS(sysdate, 2) or ADD_MONTHS(sysdate, -2)
+
+NEXT_DAY(SYSDATE, 'FRIDAY') will give the next friday after given date
+NEXT_DAY(SYSDATE, 2) will give next Monday after given date (As pr NLS_DATE_LANGUAGE set by DB admin it usually defaults to Sunday = 1 upto Saturday = 7)
+
+LAST_DAY(SYSDATE) gives last date of month
+
+ROUND(HIRE_DATE, 'MONTH') if date between 1 to 15 then returns 1st date of month. If date between 16 to 30 then returns 1st date of next month
+TRUNC(HIRE_DATE, 'MONTH') Always returns 1st date of month. like 01-Feb-18
+
+ROUND(HIRE_DATE, 'YEAR') if month between 1 to 6 then returns 1st date of year like 01-JAN-18. If month between 7 to 12 then returns 1st date of next year like 01-JAN-19
+TRUNC(HIRE_DATE, 'YEAR') Always returns 1st date of year. like 01-JAN-18
+
