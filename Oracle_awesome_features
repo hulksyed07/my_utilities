@@ -154,3 +154,21 @@ script output >> old: select * from (
                  new: select * from (
                       select 'hello' as name, null as val from dual
                       ) where name = 'hello';
+
+CHARACTER FUNCTIONS
+---------------------
+Case Conversion functions (LOWER, UPPER, INITCAP)
+Character manipulation function (CONCAT, SUBSTR, LENGTH, INSTR, LPAD|RPAD, TRIM, REPLACE)
+
+SELECT TRIM(' ' FROM ' HULK ') tab_1 from DUAL;
+SELECT TRIM(LEADING ' ' FROM ' HULK ') tab_1 from DUAL;
+SELECT TRIM(TRAILING ' ' FROM ' HULK ') tab_1 from DUAL;
+SELECT TRIM(BOTH ' ' FROM ' HULK ') tab_1 from DUAL;
+SELECT TRIM('k' FROM ' HULK ') tab_1 from DUAL;
+
+DATES
+-----------------
+Date + Number: Adds no. of days to date
+Date - Number: Subtracts no. of days to date
+Date - Date: Subtracts date - date and returns no of days
+Date + number/24: Adds number of hours to date
