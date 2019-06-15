@@ -193,3 +193,17 @@ TRUNC(HIRE_DATE, 'MONTH') Always returns 1st date of month. like 01-Feb-18
 ROUND(HIRE_DATE, 'YEAR') if month between 1 to 6 then returns 1st date of year like 01-JAN-18. If month between 7 to 12 then returns 1st date of next year like 01-JAN-19
 TRUNC(HIRE_DATE, 'YEAR') Always returns 1st date of year. like 01-JAN-18
 
+SPECIFYING SUFFIX to influence number display
+TH             Ordinal Number (for example DDTH for 4th)
+SP             Spelled out number(for example DDSP for FOUR)
+THSP or SPTH   Spelled out Ordinal Numbers(for example DDSPTH for FOURTH)
+
+Elements of Date Format Model
+YYYY    Full date in Number
+YEAR    Date spelled out in English
+MM      Two digit value of Montth
+DY      Three letter abbrevaiation of day of week like (FRI, SAT)
+DAY     Full name of Day of week
+
+SSSSS   Seconds past midnight (0 - 86399)
+
