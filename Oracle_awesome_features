@@ -172,3 +172,7 @@ Date + Number: Adds no. of days to date
 Date - Number: Subtracts no. of days to date
 Date - Date: Subtracts date - date and returns no of days
 Date + number/24: Adds number of hours to date
+
+Date RR format: DD-MON-RR
+RR takes either 20th century year or 21st century year
+if RR is between 50 to 99 then it takes 19XX year. If RR is between 0 to 49 then it takes 20XX year
