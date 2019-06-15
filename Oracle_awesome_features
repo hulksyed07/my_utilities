@@ -227,3 +227,13 @@ select * from tab_1 where created_at > TO_DATE('10-11- 2012', 'fxdd-mm- yyyy'); 
 RR format considers 00-49 as 20XX and 50-99 as 19XX whereas YY format considers everything as 20XX
 ('01-JAN-70', 'DD-MOM-RR') = 1 JAN 1970
 ('01-JAN-70', 'DD-MOM-YY') = 1 JAN 2070
+
+NVL      => NVL(name, 'no name specified')
+NVL2     => NVL2(name, 'Name Exists', 'No Name Specified')
+         => If name not null then returns 'Name Exists' if name is null then returns 'No Name Specified'
+NULLIF   => NULLIF(expr1, expr2) => retruns null if expr1 = expr2, returns expr1 if expr1 != expr2
+         => NULLIF(length(first_name), length(last_name)) => if both are equal result will be NULL if not then result will be length of first_name
+COALESCE => It retuns the first not null value among all the columns specified
+         => select coalesce(first_name, middle_name, last_name) => returns first_name, middle_name or last_name depending upon which is not null from left to right
+       
+
