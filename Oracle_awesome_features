@@ -236,4 +236,33 @@ NULLIF   => NULLIF(expr1, expr2) => retruns null if expr1 = expr2, returns expr1
 COALESCE => It retuns the first not null value among all the columns specified
          => select coalesce(first_name, middle_name, last_name) => returns first_name, middle_name or last_name depending upon which is not null from left to right
        
+CASE STATEMENT
+--------------------
+SELECT CASE age WHEN 21 THEN 'Middle Age'
+                WHEN 31 THEN 'OLD Age'
+                ELSE 'Not Born yet'
+       END my_column from tab_1
 
+SELECT CASE WHEN age > 21 THEN 'Middle Age'
+            WHEN age> 31 THEN 'OLD Age'
+            ELSE 'Not Born yet'
+       END my_column from tab_1
+
+Else part is optional
+If we dont provide else statement then the non matching case would lead to NULL value  
+
+Similarly in DECODE function if we dont provide the last else part then the value defaults to NULL
+
+GROUP FUNCTION
+--------------------
+goup_function(DISTINCT|ALL expr)
+data type of functions with expr argument could be varchar2, char, number or date
+Max and Min function on varchar2 column gives result according to alphabetical sorting
+SUM and AVG cannot be used on VARCHAR or Dates column
+
+COUNT(*) and COUNT(1) counts all rows (duplicates + null including)
+COUNT(column_name) counts only not null values present in that column
+In case u want to still count null values too then need to use NVL function inside count
+COUNT(NVL(column_name, 0))
+All group functions ignore null values
+The min, max, avg, sum, count(column_name) functions ignore Null values
