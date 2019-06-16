@@ -284,3 +284,17 @@ At max 2 group functions can be nested like
 Select max(sum(hours))
 FROM tab_1
 Group by category_id
+
+JOINS
+-----------------------
+ORA-00918: column ambiguously defined (This error occurs when you specify a column in select clause without table name in case of Join
+
+EquiJoins also known as Simple Join and Inner Join
+Non EquiJoins: is a type of join not commonly used which involves join condition other than equality operator like... where tab_1.col_1 between tab2.col3 and tab2.col4
+               Best to use a subquery instead of Non Equijoin to achieve these cases
+Cross Join: is also known as cartesian product where you just mention both the tables and do not join them on the basis of any column leading to multiplication of rows of both tables
+            Old Syntax: select user_name, city from users, address
+            New Syntax: Select user_name, city from users CROSS JOIN Address
+
+
+
