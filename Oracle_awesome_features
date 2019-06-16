@@ -288,13 +288,20 @@ Group by category_id
 JOINS
 -----------------------
 ORA-00918: column ambiguously defined (This error occurs when you specify a column in select clause without table name in case of Join
-
+----------- OLD Syntax (Oracle 8i): ---------------
 EquiJoins also known as Simple Join and Inner Join
 Non EquiJoins: is a type of join not commonly used which involves join condition other than equality operator like... where tab_1.col_1 between tab2.col3 and tab2.col4
                Best to use a subquery instead of Non Equijoin to achieve these cases
+----------- NEW SYNTAX (1999 syntax): -------------
 Cross Join: is also known as cartesian product where you just mention both the tables and do not join them on the basis of any column leading to multiplication of rows of both tables
             Old Syntax: select user_name, city from users, address
             New Syntax: Select user_name, city from users CROSS JOIN Address
 
+Natural Join: Natural Join automatically joins on the basis of columns with same name
+              If thw column_names are same between 2 tables but datatype is different then it raises an error
+              In natural join you cannot prefix table name in the matched columm in select clause (write select users.name, location_id, locations.city FROM users NATURAL JOIN Locations)
+              If you add table prefix in select clause for matched column then it throws error - ORA-25155 (column used in Natural Join cannot have qualifier)
 
+USING Clause: Instead of Natural join we can use Using clause to specify the column to be used for Join. We can specify even more than one column for join.
+              you cannot prefix table name in the matched columm in select clause (write select users.name, location_id, locations.city FROM users JOIN Locations USING(LOCATION_ID))
 
