@@ -319,5 +319,23 @@ IN:     Equal to any member in the list (where age in (20, 30, 40))
 ANY:    Must be preceded by =, !=, <, <=, >, >=. Returns TRUE if at least one element exists in the result set of the subquery for which the relation is TRUE (where age > ANY(20, 30, 40))
 ALL:    Must be preceded by =, !=, <, <=, >, >=. Returns TRUE if relation is TRUE for all elements in the result set of Subquery (where age> ALL(20, 30, 0))
 
+IN is equivalent to =ANY
 NOT operator can be used with IN, ANY and ALL
+NOT IN is equivalent to <>ALL
+
+NULL with Subqueries
+----------------------
+select * from tab_1 where name = NULL; --This is wrong (use IS NULL)
+select * from tab_1 where name in ('RAM', 'SHYAM', NULL); --This is OK
+
+In case the subquery returns one NULL value then it will get ignored and rest other would be considered for filter
+In case the subquery returns one NULL value and the outer clause is NOT IN. Then the whole query is going to return NO result
+select * from tab_1 where name NOT IN ('RAM', 'SHYAM', NULL); --This will return No Results
+
+EXISTS Clause
+-------------------------
+Select * from users where Exists (select id from locations where locations.id = users.location_id)
+Select * from users where NOT Exists (select id from locations where locations.id = users.location_id)
+
+
 
