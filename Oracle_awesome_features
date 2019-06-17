@@ -338,4 +338,12 @@ Select * from users where Exists (select id from locations where locations.id = 
 Select * from users where NOT Exists (select id from locations where locations.id = users.location_id)
 
 
+SET Operator:
+-----------------------
+Queries containing Set operator are called Compound Queries
+Set operator combines the result of 2 or more component queries into one result
 
+UNION:       Rows from both after removing duplicates
+UNION ALL:   Rows from both including duplicates
+MINUS:       Rows in the first query that are not present in second query
+INTERSECT:   Rows common in both queries
