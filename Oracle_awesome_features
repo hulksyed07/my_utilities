@@ -347,3 +347,20 @@ UNION:       Rows from both after removing duplicates
 UNION ALL:   Rows from both including duplicates
 MINUS:       Rows in the first query that are not present in second query
 INTERSECT:   Rows common in both queries
+
+For UNION, NULL Values are not ignored during duplicate checking
+The name of columns need not be identical in all the above 4 cases(UNION, UNION_ALL, MINUS, INTERSECT)
+The data types of all columns being selected should like in same data type group (such as numeric or character)
+
+in UNION the output is sorted by default on ascending order of select columns
+IN UNION ALL The output is not ordered
+In case column names/alias are different then the final column name is from the first query
+
+Matching dummy column in UNION clause
+select name, email, city from users
+UNION
+select name, email, TO_CHAR(NULL) from users_audit
+
+The ORDER by in UNION query comes last and only once. You cant write ORDER by In both queries
+The ORDER by can see column_names from first query only
+
