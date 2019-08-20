@@ -18,8 +18,10 @@ ENV
 It should contain the above variables
 
 
-To resolve this error(oci8.c:601:in oci8lib_250.bundle: ORA-24454: client host name is not set (OCIError)) run 
+To resolve this error(oci8.c:601:in oci8lib_250.bundle: ORA-24454: client host name is not set (OCIError)) run
+```
 sudo /bin/bash -c "echo '127.0.1.1 ${HOSTNAME}' >> /etc/hosts"
+```
 
 In case of issues...
 
