@@ -6,9 +6,11 @@ execute the command:   nano ~/.profile or nano ~/.bash_profile
 
 add the below lines there and save it:
 
+```
 export DYLD_LIBRARY_PATH="/opt/oracle/instantclient_11_2"
 export OCI_DIR="/opt/oracle/instantclient_11_2"
 export ORACLE_HOME="/opt/oracle/instantclient_11_2"
+```
 
 Exit it and check on terminal
 ENV
