@@ -13,6 +13,7 @@ from keras.layers import LSTM,Dropout,Dense
 from sklearn.preprocessing import MinMaxScaler
 # import tensorflow as tf
 import pdb
+import json
 
 import pandas as pd
 df = pd.read_csv('HistoricalQuotes.csv')
@@ -29,7 +30,7 @@ df.index = df['Date']
 
 ## Data Visualization
 plt.plot(df["Close/Last"],label='Close Price history')
-plt.show()
+# plt.show()
 
 
 ## LSTM Prediction Model
@@ -89,6 +90,31 @@ train_data=data[:200]
 valid_data=data[200:]
 valid_data['Predictions']=predicted_stock_price
 
-pdb.set_trace()
+# pdb.set_trace()
 plt.plot(train_data["Close/Last"])
 plt.plot(valid_data[['Close/Last',"Predictions"]])
+
+# Converting to Dict and storing
+train_dict = train_data.to_dict('index')
+pred_dict = valid_data.to_dict('index')
+
+train_dict_clean = {}
+for key in train_dict.keys():
+  if type(key) is not str:
+    train_dict_clean[str(key)] = train_dict[key]
+
+pred_dict_clean = {}
+for key in pred_dict.keys():
+  if type(key) is not str:
+    pred_dict_clean[str(key)] = pred_dict[key]
+
+train_json = json.dumps(train_dict_clean, indent = 3)
+pred_json = json.dumps(pred_dict_clean, indent = 3)
+
+f = open("predict_train_data.json", "a")
+f.write(train_json)
+f.close()
+
+f = open("predict_result_data.json", "a")
+f.write(pred_json)
+f.close()
