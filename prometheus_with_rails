@@ -1,0 +1,96 @@
+# Gemfile
+gem 'prometheus-client'
+
+# config.ru
+      # This file is used by Rack-based servers to start the application.
+
+      require_relative 'config/environment'
+      require 'rack'
+      require 'prometheus/middleware/collector'
+      require 'prometheus/middleware/exporter'
+      # Override to Fetch External Api status everytime /metrics is called
+      module Prometheus
+        module Middleware
+          class Exporter
+            def respond_with(format)
+              Prometheus::Controller.refresh_metrics
+              [
+                200,
+                { 'Content-Type' => format::CONTENT_TYPE },
+                [format.marshal(@registry)],
+              ]
+            end
+          end
+        end
+      end
+
+      use Rack::Deflater
+      # Uncomment to start tracking complete application with Prometheus
+      # use Prometheus::Middleware::Collector
+      use Prometheus::Middleware::Exporter
+
+      run Rails.application
+
+
+# iniializers/other_lib_files.rb
+
+require "#{Rails.root}/lib/prometheus.rb"
+Dir.glob("#{Rails.root}/lib/prometheus/*").each { |file| require file }
+
+# lib/prometheus.rb
+
+module Prometheus
+end
+
+# lib/prometheus/controller.rb
+
+    module Prometheus
+      module Controller
+        @@cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 5.minutes)
+
+        ALL_SERVICES = [{ name: 'dummy', uri: DUMMY_URI, params: { 'q' => DUMMY } }]
+
+        # Create a default Prometheus registry for our metrics.
+        prometheus = Prometheus::Client.registry
+
+        # Create gauge metric.
+        ALL_SERVICES.each do |service|
+          const_set("#{service[:name].upcase}_SERVICE_MONITORING_GAUGE", Prometheus::Client::Gauge.new("#{service[:name]}_service_monitoring_gauge".to_sym, docstring: "Gauge to Monitor #{service[:name].upcase}_SERVICE"))
+        end
+
+        DUMMY_1_HEALTH_MONITORING_GAUGE = Prometheus::Client::Gauge.new("dummy_health_monitoring_gauge".to_sym, docstring: "Gauge to Monitor Dummy Health")
+
+        ALL_SERVICES.each do |service|
+          prometheus.register(const_get("#{service[:name].upcase}_SERVICE_MONITORING_GAUGE"))
+        end
+
+        prometheus.register(DUMMY_1_HEALTH_MONITORING_GAUGE)
+
+        class << self
+          def refresh_metrics
+            unless @@cache.read(:metrics_available)
+                ALL_SERVICES.each do |service|
+                  monitor(const_get("#{service[:name].upcase}_SERVICE_MONITORING_GAUGE")) { DummyApiCallService.fetch_raw_response(service[:uri], service[:params]) }
+                end
+                monitor(DUMMY_1_HEALTH_MONITORING_GAUGE) { DummyApi.health_check }
+              end
+
+              @@cache.write(:metrics_available, true)
+            end
+          end
+
+          def monitor(gauge_name, &block)
+            response_code = 500
+            begin
+              response = yield
+              response_code = response.code.to_i
+            rescue
+              Rails.logger.info "External Api Monitoring Failed"
+            end
+            gauge_name.set(response_code)
+          end
+        end
+      end
+    end
+
+
