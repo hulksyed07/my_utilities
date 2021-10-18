@@ -1,0 +1,57 @@
+# Character Encoding issue
+# config/boot.rb
+    ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
+
+    ENV['NLS_LANG'] = 'AMERICAN_AMERICA.AL32UTF8'
+    # DEFAULT_OCI8_ENCODING = 'utf-8'
+
+    # #Setting NLS parameters to the below configuration for case insensitive search
+    # ENV['NLS_SORT'] = 'BINARY_CI'
+    # ENV['NLS_COMP'] = 'LINGUISTIC'
+
+    require 'bundler/setup' # Set up gems listed in the Gemfile.
+    require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
+
+
+# config/application.rb
+    module DummyApi
+      class Application < Rails::Application
+        config.load_defaults 6.0
+        # Manage timezone of application
+        config.time_zone = 'Eastern Time (US & Canada)'
+        config.api_only = true
+        # Mask these parameters in Log
+        config.filter_parameters += [:email_address, :comments]
+
+        config.log_level = :info
+        # Add custom tags to Logs
+        config.log_tags = [:subdomain, :uuid, ->(req) {
+                                                "user: #{req.env['HTTP_EMAIL']}"
+                                              }]
+        # Throw all logs to console
+        config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+      end
+    end
+
+# Cors issue
+# config/initializers/cors.rb
+    Rails.application.config.middleware.use Rack::Cors do
+      allow do
+        # origins 'example.com'
+        origins '*'
+
+        resource '*',
+                 headers: :any,
+                 methods: [:get, :post, :put, :patch, :delete, :options, :head]
+                 # ,expose: ['Link', 'Per-Page', 'Total']
+      end
+    end
+    
+# Allow specific keys in Hash with retaining original order of keys
+    def slice_while_retaining_original_order_of_keys(filtered_keys)
+      self.select { |key, val| filtered_keys.include? key }
+    end
+
+    def slice_while_retaining_original_order_of_keys!(filtered_keys)
+      self.select! { |key, val| filtered_keys.include? key }
+    end
