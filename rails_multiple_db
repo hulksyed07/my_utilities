@@ -1,0 +1,26 @@
+  def with_proper_connection
+    @connection = ActiveRecord::Base.establish_connection "db_2_#{Rails.env}".to_sym
+    yield
+    @connection = ActiveRecord::Base.establish_connection "#{Rails.env}".to_sym
+  end
+
+  task create_tables: :environment do
+      with_proper_connection do
+        Dir.glob("scripts/tables/*").each do |fle|
+          puts "** Creating table: #{fle.split('/').last.chomp('.sql')} ".ljust(79, '*')
+          ActiveRecord::Migration[5].execute File.read(fle)
+        end
+      end
+    end
+  end
+
+  task drop_tables: :environment do
+      with_proper_connection do
+        Dir.entries("scripts/tables/").map{ |ent| ent.chomp('.sql') }.each do |table_name|
+          next if ['.', '..'].include?(table_name)
+          puts ActiveRecord::Base.connection_config
+          ActiveRecord::Migration[5].execute "DROP TABLE #{table_name}"
+        end
+      end
+    end
+  end
